@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/a783aedd26.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>My Kalosdex</title>
+  </head>
+  <body>
+    <form id="search-form">
+      <input
+        type="text"
+        name="searchText"
+        id="searchText"
+        placeholder="Search by name or number..."
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="pokedex">
+      <img id="dex-top" src="imgs/dexTop.png" alt="Dex Top" />
+      <img id="dex-bottom" src="imgs/dexBottom.png" alt="Dex Bottom" />
+      <div class="dex-container">
+        <img src="imgs/pokeball.png" alt="Loading" class="loading" />
+        <div class="dex-content hidden">
+          <img src="" alt="" id="pokemon-sprite" />
+          <h1 id="pokemon-name"></h1>
+          <div id="types"></div>
+          <p id="pokemon-flavor"></p>
+        </div>
+        <img src="imgs/scanlines.png" alt="" class="scanlines" />
+      </div>
+      <button id="btn-random-pokemon" class="transparent">
+        <i class="fas fa-random"></i>
+      </button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

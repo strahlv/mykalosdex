@@ -1,0 +1,314 @@
+@font-face {
+  font-family: "Pokemon Classic";
+  src: url(fonts/Pokemon\ Classic.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pokemon Classic", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url(imgs/pokeballsm.png) repeat center/10%, #333;
+}
+
+/* TODO: REMOVE */
+form {
+  display: none;
+}
+
+#pokedex {
+  cursor: pointer;
+  width: 600px;
+  height: 750px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: all 200ms ease-in-out;
+}
+
+.opened {
+  height: 1500px !important;
+}
+
+#pokedex #dex-top,
+#pokedex #dex-bottom {
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+}
+
+#pokedex #dex-top {
+  top: 0;
+}
+
+#pokedex #dex-bottom {
+  bottom: 0;
+}
+
+.dex-container {
+  background: #3a6161;
+  width: 90%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+  opacity: 0.9;
+}
+
+.dex-container-on::after {
+  content: "";
+  background: #c5ffff;
+  opacity: 0.2;
+  mix-blend-mode: hue;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  animation: dex-container-overlay 800ms steps(4) infinite alternate-reverse;
+}
+
+@keyframes dex-container-overlay {
+  to {
+    transform: scaleX(95%);
+  }
+}
+
+.dex-container-on {
+  background: #c5ffff;
+  width: 95%;
+}
+
+.dex-content {
+  color: #005858;
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.dex-content h1 {
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  transition: opacity 200ms linear;
+}
+
+.dex-content p {
+  font-size: 0.75rem;
+}
+
+.dex-content-off {
+  opacity: 0;
+}
+
+#btn-random-pokemon {
+  border: none;
+  background: none;
+  color: #005858;
+  font-size: 3rem;
+  position: absolute;
+  bottom: 20%;
+  z-index: 1000;
+  cursor: pointer;
+  transition: opacity 200ms linear;
+}
+
+#btn-random-pokemon:hover {
+  color: #3cbeb1;
+}
+
+.glitched-scanline {
+  position: absolute;
+  width: 95%;
+  height: 80%;
+  z-index: 15;
+  mix-blend-mode: multiply;
+  background: #c5ffff;
+  animation: glitched-scanline-clip 10000ms linear infinite;
+}
+
+@keyframes glitched-scanline-clip {
+  from {
+    clip-path: inset(0 0 calc(100% - 1px) 0);
+  }
+  to {
+    clip-path: inset(calc(100% - 1px) 0 0 0);
+  }
+}
+
+.scanlines {
+  position: absolute;
+  width: 95%;
+  height: 80%;
+  z-index: 16;
+  mix-blend-mode: multiply;
+  opacity: 0.2;
+  animation: scanlines 1s linear infinite;
+}
+
+@keyframes scanlines {
+  to {
+    transform: translateY(100px);
+  }
+}
+
+.glitch {
+  position: absolute;
+  inset: 0;
+  user-select: none;
+}
+
+.loading {
+  position: absolute;
+  width: 200px;
+  opacity: 0;
+  transform: scale(0);
+  z-index: 5;
+}
+
+.loading-in {
+  animation: loading-ease-in 1s ease-in-out forwards,
+    loading 2s linear 1s infinite normal;
+}
+
+.loading-out {
+  animation: loading-ease-out 1s ease-in-out forwards;
+}
+
+@keyframes loading-ease-in {
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.transparent {
+  opacity: 0;
+}
+
+/* =============
+    TYPES
+============= */
+
+#types {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.type {
+  background: #333;
+  color: #ffffff;
+  font-size: 0.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+  flex: 1 0 150px;
+}
+
+.type-fire {
+  background: #ffa500;
+}
+
+.type-water {
+  background: #6495ed;
+}
+
+.type-grass {
+  background: #2bb92b;
+}
+
+.type-electric {
+  background: #ffd700;
+}
+
+.type-psychic {
+  background: rgb(223, 64, 91);
+}
+
+.type-ice {
+  background: #3cbeb1;
+}
+
+.type-dragon {
+  background: #310a9e;
+}
+
+.type-dark {
+  background: #412f22;
+}
+
+.type-fairy {
+  background: #f78888;
+}
+
+.type-normal {
+  background: rgb(155, 149, 96);
+}
+
+.type-fighting {
+  background: #800000;
+}
+
+.type-flying {
+  background: #a677c2;
+}
+
+.type-poison {
+  background: #881a88;
+}
+
+.type-ground {
+  background: #c9a751;
+}
+
+.type-rock {
+  background: #b99728;
+}
+
+.type-bug {
+  background: #74913c;
+}
+
+.type-ghost {
+  background: #6d3e83;
+}
+
+.type-steel {
+  background: #a1a1a1;
+}
